@@ -1,8 +1,8 @@
 // Define url for earthquake data/
-var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
+let url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 
 // Create myMap/
-var myMap = L.map("map", {
+let myMap = L.map("map", {
     center: [40.73, -85.0023],
     zoom: 5
 });
@@ -64,12 +64,12 @@ d3.json(url).then(function (data) {
     }).addTo(myMap);
 
 // Add the legend with colors to corrolate with depth
-var legend = L.control({position: "bottomright"});
+let legend = L.control({position: "bottomright"});
 legend.onAdd = function() {
-  var div = L.DomUtil.create("div", "info legend"),
+    let div = L.DomUtil.create("div", "info legend"),
   depth = [-10, 10, 30, 50, 70, 90];
 
-  for (var i = 0; i < depth.length; i++) {
+  for (let i = 0; i < depth.length; i++) {
     div.innerHTML +=
     '<i style="background:' + mapColor(depth[i] + 1) + '"></i> ' + depth[i] + (depth[i + 1] ? '&ndash;' + depth[i + 1] + '<br>' : '+');
   }
